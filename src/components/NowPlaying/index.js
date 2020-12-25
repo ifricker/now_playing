@@ -2,30 +2,32 @@ import React from "react";
 
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
 
-export const NowPlaying = () => {
+export const NowPlaying = props => {
+  const { artist, album, artUrl, isPlaying, track } = props;
+  console.log(artUrl);
+
   return (
     <Container className="m-auto">
       <Row className="align-items-center">
         <Col sm="4">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/en/d/df/RLaMontagne_PartLight.jpg"
+          <img src={`http://192.186.1.71:5005/${artUrl}`} />
+          <Image
+            source={`data:image,${artUrl}`}
             alt="album-cover"
-            class="album-cover"
+            className="album-cover"
           />
         </Col>
         <Col sm="1" />
         <Col sm="7">
           <Row className="track-col">
-            <h2 className="track-name">
-              Such a Simple Thing Such a Simple Thing Such a Simple Thing
-            </h2>
+            <h2 className="track-name">{track}</h2>
           </Row>
           <Row>
             <p>
-              Ray LaMontagne •{" "}
-              <span class="font-weight-light">Part of the Light</span>
+              {artist} • <span className="font-weight-light">{album}</span>
             </p>
           </Row>
         </Col>
