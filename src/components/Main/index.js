@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 
+import AlbumGallery from "../AlbumGallery";
 import NowPlaying from "../NowPlaying";
 import Turntable from "../Turntable";
 import { useComponentLogic } from "./hooks";
@@ -12,15 +13,18 @@ const Main = () => {
     backgroundColor,
     artUrl,
     isPlaying,
-    track
+    track,
   } = useComponentLogic();
 
+  if (!isPlaying) {
+    return <AlbumGallery />;
+  }
   return (
     <Container
       fluid
       className="d-flex"
       style={{
-        background: backgroundColor ? backgroundColor : "#9dbc96"
+        background: backgroundColor ? backgroundColor : "#9dbc96",
       }}
     >
       <NowPlaying

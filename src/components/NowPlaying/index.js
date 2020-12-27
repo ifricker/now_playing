@@ -2,10 +2,9 @@ import React from "react";
 
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
 
-export const NowPlaying = props => {
+export const NowPlaying = (props) => {
   const { artist, album, artUrl, isPlaying, track } = props;
   console.log(artUrl);
 
@@ -13,12 +12,7 @@ export const NowPlaying = props => {
     <Container className="m-auto">
       <Row className="align-items-center">
         <Col sm="4">
-          <img src={`http://192.186.1.71:5005/${artUrl}`} />
-          <Image
-            source={`data:image,${artUrl}`}
-            alt="album-cover"
-            className="album-cover"
-          />
+          <img src={`${artUrl}`} alt="album-cover" className="album-cover" />
         </Col>
         <Col sm="1" />
         <Col sm="7">

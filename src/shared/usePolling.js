@@ -1,7 +1,7 @@
 // https://github.com/vivek12345/react-polling-hook
 import React, { useState, useEffect, useRef } from "react";
 
-const usePolling = config => {
+const usePolling = (config) => {
   const version = React.version.split("-");
   if (version[0] < "16.7.0") {
     throw new Error(
@@ -66,8 +66,8 @@ const usePolling = config => {
        * false - This means we need to stop polling
        */
       fetch(url, api)
-        .then(resp => {
-          return resp.json().then(data => {
+        .then((resp) => {
+          return resp.json().then((data) => {
             if (resp.ok) {
               return data;
             } else {
@@ -76,12 +76,12 @@ const usePolling = config => {
           });
         })
         .then(onSuccess)
-        .then(continuePolling => {
+        .then((continuePolling) => {
           persistedIsPolling.current && continuePolling
             ? runPolling()
             : stopPolling();
         })
-        .catch(error => {
+        .catch((error) => {
           if (shouldRetry && retryCount > 0) {
             onFailure && onFailure(error);
             retryCount--;
